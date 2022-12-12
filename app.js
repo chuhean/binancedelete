@@ -2,6 +2,7 @@ const https = require('https');
 const url = require('url');
 const fs = require('fs');
 const PORT = 443;
+const HOST = "45.76.158.107";
 
 var httpsServer = https.createServer({cert: fs.readFileSync('./cert.pem'), key: fs.readFileSync('./key.pem')}, function (req, res) {
     const path = url.parse(req.url, true).pathname;
@@ -45,6 +46,6 @@ var httpsServer = https.createServer({cert: fs.readFileSync('./cert.pem'), key: 
 
 });
 
-httpsServer.listen(process.env.PORT, "0.0.0.0", () => {
+httpsServer.listen(PORT, HOST, () => {
     console.log("Server is running at port 443");
 });
