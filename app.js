@@ -1,10 +1,10 @@
+const http = require('http');
 const https = require('https');
 const url = require('url');
-const fs = require('fs');
 const PORT = 80;
 const HOST = "45.76.158.107";
 
-var httpsServer = https.createServer({cert: fs.readFileSync('./cert.pem'), key: fs.readFileSync('./key.pem')}, function (req, res) {
+var httpServer = http.createServer(function (req, res) {
     const path = url.parse(req.url, true).pathname;
     const search = url.parse(req.url, true).search;
     const urlPath = path.concat(search);
@@ -46,6 +46,6 @@ var httpsServer = https.createServer({cert: fs.readFileSync('./cert.pem'), key: 
 
 });
 
-httpsServer.listen(PORT, HOST, () => {
-    console.log("Server is running at port 443");
+httpServer.listen(PORT, HOST, () => {
+    console.log("Server is running at port 80");
 });
