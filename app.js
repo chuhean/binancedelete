@@ -1,7 +1,7 @@
 const https = require('https');
 const url = require('url');
 const fs = require('fs');
-const PORT = 443;
+const PORT = 80;
 const HOST = "45.76.158.107";
 
 var httpsServer = https.createServer({cert: fs.readFileSync('./cert.pem'), key: fs.readFileSync('./key.pem')}, function (req, res) {
